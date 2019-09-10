@@ -1,14 +1,14 @@
 {
-  "name": "start-lit-element",
+  "name": "Team-2-Bus-App",
   "version": "1.0.0",
-  "description": "start-lit-element",
-  "repository": "https://github.com/PolymerLabs/start-lit-element.git",
-  "main": "start-lit-element.js",
+  "description": "team-2-bus-app",
+  "repository": "https://github.com/bbva-usa/Team-2-Bus-App.git",
+  "main": "team-2-bus-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "The Polymer Authors",
-  "license": "BSD-3-Clause",
+  "author": "Kris Jaje, Kenneth Curtis",
+  "license": "GNU",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest"

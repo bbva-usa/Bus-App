@@ -12,7 +12,7 @@
 // Import LitElement base class and html helper function
 import { LitElement, html } from 'lit-element';
 
-export class StartLitElement extends LitElement {
+export class Team2BusApp extends LitElement {
   /**
    * Define properties. Properties defined here will be automatically 
    * observed.
@@ -103,4 +103,4 @@ export class StartLitElement extends LitElement {
 }
 
 // Register the element with the browser
-customElements.define('start-lit-element', StartLitElement);
+customElements.define('team-2-bus-app', Team2BusApp);
