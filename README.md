@@ -1,4 +1,4 @@
-# start-lit-element
+# team-2-bus-app
 
 A simple Hello World for LitElement.
 
