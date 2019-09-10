@@ -50,15 +50,6 @@ export class Team2BusApp extends LitElement {
 
       <h1>Start LitElement!</h1>
       <p>${this.message}</p>
-
-      <input name="myinput" id="myinput" 
-        type="checkbox"
-        ?checked="${this.pie}"
-        @change="${this.togglePie}">
-
-      <label for="myinput">I like pie.</label>
-      
-      ${this.pie ? html`<lazy-element></lazy-element>` : html``}
     `;
   }
 
@@ -69,20 +60,11 @@ export class Team2BusApp extends LitElement {
    */
   firstUpdated() {
     this.loadLazy();
-
-    const myInput = this.shadowRoot.getElementById('myinput');
-    myInput.focus();
   }
 
-  /**
-   * Event handler. Gets called whenever the checkbox fires a `change` event.
-   * - Toggle whether to display <lazy-element>
-   * - Call a method to load the lazy element if necessary
-   */
-  togglePie(e) {
-    this.pie = !this.pie;
-    this.loadLazy();
-  }
+
+
+
 
   /**
    * If we need the lazy element && it hasn't already been loaded, 
@@ -90,7 +72,7 @@ export class Team2BusApp extends LitElement {
    */
   async loadLazy() {
     console.log('loadLazy');
-    if(this.pie && !this.loadComplete) {
+    if(!this.loadComplete) {
       return import('./lazy-element.js').then((LazyElement) => {
         this.loadComplete = true;
         console.log("LazyElement loaded");

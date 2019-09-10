@@ -2,15 +2,11 @@
 
 <html lang="en">
 <head>
-  <!-- Register service worker if supported. -->
-  <!--
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');
-    }
+
+<!-- Get Google MAPS --->
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1tcOn92M1N7fLY-suXooN1lSprbOlB0&callback=initMap">
   </script>
-  -->
-  
   <!-- Load polyfills -->
   <script 
     src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
@@ -24,6 +20,8 @@
     } 
     WebComponents.waitFor(async () => { 
       import('./src/team-2-bus-app.js');
+      import('./src/bus-map.js');
+
     });
   </script>
   
@@ -44,12 +42,16 @@
     To configure starting state of the checkbox from markup: 
     <start-lit-element pie="true"> 
   -->
-  
+  <bus-map>
+    <p id="jsyes2"></p>
+    <script type="text/javascript">
+      document.getElementById('jsyes2').innerHTML='Loading...';
+    </script>
+    <noscript>
+      Could not render the custom element. Check that JavaScript is enabled.
+    </noscript>
+  </bus-map>
   <team-2-bus-app>
-    <!-- Placeholders to improve time to first paint -->
-    <h1>Start LitElement!</h1>
-    <p>Hello World from LitElement</p>
-
     <!-- Check for JavaScript -->
     <p id="jsyes"></p>
     <script type="text/javascript">
