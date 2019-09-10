@@ -36,7 +36,7 @@ git clone https://github.com/PolymerLabs/start-lit-element
 
 ```
 npm install -g polymer-cli
-cd start-lit-element
+cd team-2-bus-app
 npm install
 polymer serve
 ```
@@ -49,8 +49,8 @@ polymer serve
 <!-- Change stuff here for your app -->
 <meta name="description" content="start-lit-element">
 <meta name="theme-color" content="#ffffff">
-<title>start-lit-element</title>
-```
+<title>team-2-bus-app</title>
+
 
 2. In index.html, uncomment the service worker registration code:
 
@@ -69,8 +69,8 @@ polymer serve
 ```json
 "description": "start-lit-element",
 "start_url": "index.html",
-"name": "start-lit-element",
-"short_name": "start-lit-el",
+"name": "team-2-bus-app",
+"short_name": "team-2-bus-app",
 "background_color": "#ffffff",
 "theme_color":"#ffffff",
 ```
@@ -80,7 +80,7 @@ polymer serve
 5. In polymer.json, update your shell & entrypoint if required
 
 ```
-"shell": "src/start-lit-element.js",
+"shell": "src/team-2-bus-app.js",
 "entrypoint": "index.html",
 ```
 
@@ -121,7 +121,7 @@ Let me know of any [issues](https://github.com/PolymerLabs/start-lit-element/iss
 (All browsers) Dynamic `import` warning:
 
 ```
-Could not resolve module specifier "require" in file "..src/start-lit-element.js".
+Could not resolve module specifier "require" in file "..src/team-2-bus-app".
 ```
 
 See https://github.com/Polymer/tools/issues/131.
