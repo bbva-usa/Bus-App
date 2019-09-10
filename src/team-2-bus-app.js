@@ -35,6 +35,7 @@ export class Team2BusApp extends LitElement {
     this.loadComplete = false;
     this.message = 'Hello World from LitElement';
     this.pie = false;
+    //this.getSnap();
   }
 
   /**
@@ -62,7 +63,17 @@ export class Team2BusApp extends LitElement {
     this.loadLazy();
   }
 
+  async getSnap(){
+    let path='60.170880,24.942795|60.170879,24.942796|60.170877,24.942796'
+    let option={
+      interpolate: '&true',
+      url:'https://roads.googleapis.com/v1/snapToRoads?',
+      key: '&key=AIzaSyBIMVzu27uEg_Mj82V6pNMQyOmDMMewJOw',
+      path: path
+    }
+    }
 
+  }
 
 
 

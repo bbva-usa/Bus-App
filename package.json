@@ -10,6 +10,7 @@
   "author": "Kris Jaje, Kenneth Curtis",
   "license": "GNU",
   "dependencies": {
+    "@polymer/iron-ajax": "^3.0.1",
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest"
   }

@@ -5,7 +5,7 @@
 
 <!-- Get Google MAPS --->
   <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1tcOn92M1N7fLY-suXooN1lSprbOlB0&callback=initMap">
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIMVzu27uEg_Mj82V6pNMQyOmDMMewJOw">
   </script>
   <!-- Load polyfills -->
   <script 
@@ -21,6 +21,7 @@
     WebComponents.waitFor(async () => { 
       import('./src/team-2-bus-app.js');
       import('./src/bus-map.js');
+      import('../node_modules/@polymer/iron-ajax/iron-ajax.js');
 
     });
   </script>
@@ -28,7 +29,7 @@
   <!-- Change stuff here for your app -->
   <meta name="description" content="start-lit-element">
   <meta name="theme-color" content="#ffffff">
-  <title>start-lit-element</title>
+  <title>team-2-bus-app</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="./manifest.json">
