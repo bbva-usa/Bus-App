@@ -123,15 +123,56 @@ class BusMap extends LitElement {
         this.selectedCenter=this.routPaths[e.detail.changedData].center;
         this.myMarkers=this.getMarkers();
         this.initMap(true);
+        this.route = e.detail.changedData;
+        setTimeout(this.getBusLocation(), 10000);
 
     }
+
+    getBusLocation() {
+        let iconBase = 'http://maps.google.com/mapfiles/kml/shapes/'
+        let icons = { bus:{icon: iconBase + 'bus.png'}
+        };
+        if(this.busMarker) {
+            this.clearBusMarker();
+        }
+        else{
+            let posList = this.routPaths[this.route].path.split("|");
+
+            let posGroup = posList[0].split(",");
+            this.busPos = {lat:Number(posGroup[0]), lng:Number(posGroup[1])};
+        }
+        let posList = this.routPaths[this.route].path.split("|");
+
+        let posGroup = posList[Math.round(Math.random() * posList.length-1)].split(",");
+        this.busPos = {lat:Number(posGroup[0]), lng:Number(posGroup[1])};
+        this.busMarker =new google.maps.Marker(
+            {
+                position: this.busPos,
+                icon: {url:icons.bus.icon, scaledSize: new google.maps.Size(25, 25)},
+                map:map}
+        );
+
+        setTimeout(() => this.getBusLocation(), 5000);
+
+    }
+
+    clearBusMarker(){
+        this.busMarker.setMap(null);
+    }
+    // label:{color: '#000', fontSize: '12px', fontWeight: '600', text: ''},
 
     initMap(addMarkers) {
         // The location of 33.453706,-86.931612 60.170880,24.942795
         var uluru = {lat: 33.459474, lng: -86.933859};
         // The map, centered at Uluru
         let myMap=this.shadowRoot.getElementById('googleMap');
-        map = new google.maps.Map(myMap, {zoom: 15, center: this.selectedCenter});
+        map = new google.maps.Map(myMap,
+            {
+                zoom: 15,
+                center: this.selectedCenter,
+                mapTypeControl:false
+            }
+        );
         // The marker, positioned at -86.931612
 
         if(addMarkers){
