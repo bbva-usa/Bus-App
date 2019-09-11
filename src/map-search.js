@@ -34,7 +34,7 @@ export class MapSearch extends LitElement {
         super();
         this.mapSearch='';
         this.busLins=[
-            {rout:'1A',busNo:1401,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1401_Driver.jpg'},
+            {rout:'1A',busNo:1401,showImg:false,busDriverName:'Coach Pat',imgSrc:'manifest/1401_Driver.jpg'},
             {rout:'3',busNo:1403,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1403_Driver.png'},
             {rout:'5',busNo:1405,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1405_Driver.png'}
             ];
@@ -127,7 +127,7 @@ export class MapSearch extends LitElement {
          <div class="well" style="height:470px;overflow: scroll" >
          ${this.busLinssFiltered.length>0? html`<span>BUS:</span>`: html``}
 
-         <ul>${this.busLinssFiltered.map(i => html`<li name="${i.busNo}" @click="${this.showBusRout}"><div class="busNo" id="${i.busNo}">${i.busNo}</div>${i.showImg?html`<div class="card"><img src="${i.imgSrc}" alt="Avatar" style="width:100%"> <div class="container"><h4><b>${i.busDriverName}</b></h4><p>Driver</p> </div></div>`:html``}</li>`)}</ul>
+         <ul>${this.busLinssFiltered.map(i => html`<li name="${i.busNo}" @click="${this.showBusRout}"><div class="busNo" id="${i.busNo}">${i.busNo}</div>${i.showImg?html`<div class="card"><img src="${i.imgSrc}" alt="Avatar" style="width:100%"> <div class="container"><h4><b>${i.busDriverName}</b></h4></div></div>`:html``}</li>`)}</ul>
 
 
          ${this.schoolsFiltered.length>0? html`<span>SCHOOLS:</span>`: html``}
