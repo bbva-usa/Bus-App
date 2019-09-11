@@ -19,7 +19,7 @@
       waitFor(cb){ addEventListener('WebComponentsReady', cb) }
     } 
     WebComponents.waitFor(async () => { 
-      import('./src/team-2-bus-app.js');
+
       import('./src/bus-map.js');
       import('./src/map-search.js');
       import('../node_modules/@polymer/iron-ajax/iron-ajax.js');
@@ -55,14 +55,5 @@
       Could not render the custom element. Check that JavaScript is enabled.
     </noscript>
   </bus-map>
-  <team-2-bus-app>
-    <!-- Check for JavaScript -->
-    <p id="jsyes"></p>
-    <script type="text/javascript">
-      document.getElementById('jsyes').innerHTML='Loading...';
-    </script>
-    <noscript>
-      Could not render the custom element. Check that JavaScript is enabled.
-    </noscript>
-  </team-2-bus-app>
+
 </body>

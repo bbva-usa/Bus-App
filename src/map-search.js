@@ -31,22 +31,58 @@ export class MapSearch extends LitElement {
     constructor() {
         // Must call superconstructor first.
         super();
-        this.MapSearch='';
-        this.tileComments=[
-            {user:'Tom Black',comment:'Yes I think this two',gender:'M'},
-            {user:'Mark Joke',comment:'At the same time you are adding useful tips which the readers of the post can use to solve problems and reap the benefits.',gender:'M'},
-            {user:'Adam Rope',comment:'Lets take a look at how to comment properly and build your online profile rather than be labelled a spammer.',gender:'M'},
-            {user:'Silvia Thompson',comment:'I guess you’ve probably noticed peoples head shots next to the search results when using Google.',gender:'F'},
-            {user:'Hanna Star',comment:'These get more click thru’s than results which don’t feature a persons face. Its the same with comments. Always use an email address which has an avatar attached to it.',gender:'F'},
-            {user:'John Known',comment:'Whenever you comment on any blog using the email address you sign up with at Gravatar, your image will be displayed next to your comments. So be thoughtful before you start commenting on blogs in your niche as you build your online identity.',gender:'M'},
-            {user:'Julie Smith',comment:'Successful bloggers are known by their name. Many even name their blog the same as their personal name.',gender:'F'},
-            {user:'Sam Silly',comment:'If you use your real name, you’ll be taken more seriously and people won’t think you may be trying to hide something.',gender:'M'}
-
+        this.mapSearch='';
+        this.busLins=[
+            {rout:'1A',busNo:1401},
+            {rout:'3',busNo:1403},
+            {rout:'5',busNo:1405}
+            ];
+        this.schools=[
+            {id:50,name:'Robinson Elementary'},
+            {id:40,name:'Glen Oaks Elementary'},
+            {id:20,name:'Fairfield High Preparatory School'},
+            {id:10,name:'C.J.Donald Elmentary'},
+            {id:37,name:'Forest Hill Middle'}
         ];
-        this.tileComments.splice(0,Math.floor(Math.random() * 6));
-        this.newComment='';
-        this.showAddComent='none';
+        this.schoolsFiltered=this.schools;
+        this.busLinssFiltered=this.busLins;
+
         // Initialize properties
+
+
+
+    }
+
+    showBusRout(e){
+
+        let showBusRoutEvent = new CustomEvent('show-bus-rout-event',{
+
+            detail:{
+                type:'Bus Rout',
+                changedData:e.target.id
+            }
+        });
+        this.dispatchEvent(showBusRoutEvent);
+    }
+
+    filterData(e){
+        let searchFor=e.target.value;
+        //this.schools=this.schools.filter(name => name.startsWith(searchFor));
+
+
+        this.schoolsFiltered =  this.schools.filter(function(school) {
+            return school.name.startsWith(searchFor);
+        });
+
+        this.busLinssFiltered =  this.busLins.filter(function(bus) {
+            return bus.busNo.toString().startsWith(searchFor);
+        });
+
+
+
+
+
+        this.mapSearch=searchFor;
 
 
 
@@ -70,10 +106,19 @@ export class MapSearch extends LitElement {
 
         <div class="well">
              <form class="example">
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" @input="${this.filterData} placeholder="Search.." name="search">
             </form>
         </div>
-         <div class="well" style="height: 350px">
+         <div class="well" style="height: 370px;overflow: scroll" >
+         ${this.busLinssFiltered.length>0? html`<span>BUS:</span>`: html``}
+
+         <ul>${this.busLinssFiltered.map(i => html`<li id="${i.busNo}" @click="${this.showBusRout}">${i.busNo}</li>`)}</ul>
+
+
+         ${this.schoolsFiltered.length>0? html`<span>SCHOOLS:</span>`: html``}
+         <ul>${this.schoolsFiltered.map(i => html`<li>${i.name}</li>`)}</ul>
+
+
 
         </div>
 
