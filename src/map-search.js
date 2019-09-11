@@ -21,7 +21,8 @@ export class MapSearch extends LitElement {
      */
     static get properties() {
         return {
-            mapSearch: {type:String}
+            mapSearch: {type:String},
+            busLinssFiltered:{type:Array}
         };
     }
 
@@ -33,9 +34,9 @@ export class MapSearch extends LitElement {
         super();
         this.mapSearch='';
         this.busLins=[
-            {rout:'1A',busNo:1401},
-            {rout:'3',busNo:1403},
-            {rout:'5',busNo:1405}
+            {rout:'1A',busNo:1401,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1401_Driver.jpg'},
+            {rout:'3',busNo:1403,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1403_Driver.png'},
+            {rout:'5',busNo:1405,showImg:false,busDriverName:'John Smith',imgSrc:'manifest/1405_Driver.png'}
             ];
         this.schools=[
             {id:50,name:'Robinson Elementary'},
@@ -55,6 +56,7 @@ export class MapSearch extends LitElement {
 
     showBusRout(e){
 
+        this.showImage(e.target.id);
         let showBusRoutEvent = new CustomEvent('show-bus-rout-event',{
 
             detail:{
@@ -63,6 +65,19 @@ export class MapSearch extends LitElement {
             }
         });
         this.dispatchEvent(showBusRoutEvent);
+    }
+
+    showImage(busNo){
+        let busLinssFilteredTMP=this.busLinssFiltered;
+        for(let i=0;busLinssFilteredTMP.length>i;i++){
+            if(busLinssFilteredTMP[i].busNo==busNo){
+                busLinssFilteredTMP[i].showImg=true;
+            }
+            else{
+                busLinssFilteredTMP[i].showImg=false;
+            }
+        }
+        this.busLinssFiltered=JSON.parse(JSON.stringify(busLinssFilteredTMP));
     }
 
     filterData(e){
@@ -109,14 +124,16 @@ export class MapSearch extends LitElement {
                 <input type="text" @input="${this.filterData} placeholder="Search.." name="search">
             </form>
         </div>
-         <div class="well" style="height: 370px;overflow: scroll" >
+         <div class="well" style="height:470px;overflow: scroll" >
          ${this.busLinssFiltered.length>0? html`<span>BUS:</span>`: html``}
 
-         <ul>${this.busLinssFiltered.map(i => html`<li id="${i.busNo}" @click="${this.showBusRout}">${i.busNo}</li>`)}</ul>
+         <ul>${this.busLinssFiltered.map(i => html`<li name="${i.busNo}" @click="${this.showBusRout}"><div class="busNo" id="${i.busNo}">${i.busNo}</div>${i.showImg?html`<div class="card"><img src="${i.imgSrc}" alt="Avatar" style="width:100%"> <div class="container"><h4><b>${i.busDriverName}</b></h4><p>Driver</p> </div></div>`:html``}</li>`)}</ul>
 
 
          ${this.schoolsFiltered.length>0? html`<span>SCHOOLS:</span>`: html``}
          <ul>${this.schoolsFiltered.map(i => html`<li>${i.name}</li>`)}</ul>
+
+
 
 
 

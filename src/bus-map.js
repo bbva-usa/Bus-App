@@ -13,8 +13,8 @@ class BusMap extends LitElement {
                 top: 50px;
                 left: 50px;
                 background-color: grey;
-                width: 350px;
-                height: 500px;
+                width: 400px;
+                height: 600px;
                 opacity: 0.9;
                 z-index: 9;
             }
